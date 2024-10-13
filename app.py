@@ -1,3 +1,7 @@
+import os
+host = os.getenv('FLASK_HOST', '0.0.0.0')
+port = int(os.getenv('FLASK_PORT', '3000'))
+
 from flask import Flask, render_template, request, jsonify
 from sklearn.datasets import fetch_20newsgroups
 
@@ -39,4 +43,4 @@ def search():
     return jsonify({'documents': documents, 'similarities': similarities, 'indices': indices})
 
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=3000)
+    app.run(host=host, port=port)
