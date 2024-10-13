@@ -30,7 +30,7 @@ jobs:
       run: |
         make install
         make run &
-        sleep 10
+        sleep 20
     - name: Test application
       run: |
         curl http://localhost:3000
