@@ -32,9 +32,18 @@ function displayResults(data) {
     }
 }
 
+let chartInstance = null;  // Declare this variable outside the function to keep track of the existing chart instance
+
 function displayChart(data) {
     let ctx = document.getElementById('similarity-chart').getContext('2d');
-    new Chart(ctx, {
+    
+    // Destroy the existing chart instance if it exists
+    if (chartInstance) {
+        chartInstance.destroy();
+    }
+
+    // Create a new chart instance
+    chartInstance = new Chart(ctx, {
         type: 'bar',
         data: {
             labels: data.indices,
